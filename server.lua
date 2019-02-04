@@ -1,6 +1,6 @@
 ------------ Made By caprancTV ------------
 
-local reportCommand = "ahelp"
+local helpCommand = "ahelp"
 
 local admins ={
     "steam:11000010dbe40a2",
@@ -9,15 +9,15 @@ local admins ={
     "steam:"
 }
 
-RegisterCommand(reportCommand, function(s, a)
-	local message = table.concat(a, " ")
-    local reportedPerson = tonumber(a[1])
+RegisterCommand(helpCommand, function(source, args, raw)
+    local message = table.concat(args, " ", 1)
+    local helpPerson = tonumber(args[1])
 
     if message then
-        TriggerClientEvent("chatMessage", s, "^1Report Sent to Online Admins.")
-        TriggerClientEvent("SendPlayerReport", -1, s, message)
+        TriggerClientEvent("chatMessage", s, "^1Help Request Sent to Online Admins.")
+        TriggerClientEvent("SendHelpRequest", -1, source, message)
     else
-        TriggerClientEvent("chatMessage", s, "^3Please specify a report message. \n^7Usage: /" .. reportCommand .. " Reason")
+        TriggerClientEvent("chatMessage", s, "^3Please specify a report message. \n^7Usage: /" .. helpCommand .. " Reason")
     end
 end)
 
